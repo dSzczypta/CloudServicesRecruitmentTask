@@ -92,7 +92,7 @@ Installation process is fairly simple. All you need is alredy prepared in Docker
 2. Run the `docker compose up` command. It will build required images and start all services (backend written in Django + postgres database).
 3. The application will be accessible at `http://localhost:8000`.
 4. To load initial data for the project use `docker exec cloud_services-backend-1 bash -c "python manage.py loaddata fixtures/menu.seed.json"`.
-5. 
+5. Create a superuser by entering the container with the command `docker exec -it cloud_services-backend-1`, then type the command `python manage.py createsuperuser`. Complete the required registration information.
     
 
 ## Contact
