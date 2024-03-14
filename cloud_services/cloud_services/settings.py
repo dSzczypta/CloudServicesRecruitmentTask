@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'drf_yasg',
+    'django_celery_beat',
     'restaurant'
 ]
 
@@ -148,3 +150,30 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# CELERY
+
+CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+CELERY_ACCEPT_CONTENT = ['application/json', 'application/x-python-serialize']
+CELERY_TASK_SERIALIZER = 'json'
+
+CELERYBEAT_SCHEDULE = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULE = {
+    'send_email_to_customers' : {
+        'task': 'restaurant.tasks.send_email_to_customers',
+        'schedule': crontab(minute=0, hour='10')
+    },
+}
+
+
+# EMAIL
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend').__str__()
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.example.com').__str__()
+EMAIL_PORT = os.getenv('EMAIL_PORT', 587).__str__()
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'your_email@example.com').__str__()
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'your_email_password').__str__()
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True).__str__()
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False).__str__()
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'your_email@example.com').__str__()
