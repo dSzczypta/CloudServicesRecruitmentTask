@@ -61,6 +61,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": True,
+    "SECURITY_DEFINITIONS": {
+        "Basic": {"type": "basic"},
+        "api_key": {"type": "apiKey", "name": "authorization", "in": "header"},
+    },
+    "REFETCH_SCHEMA_WITH_AUTH": True,
+}
 
 ROOT_URLCONF = 'cloud_services.urls'
 
