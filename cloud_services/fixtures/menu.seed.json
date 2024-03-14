@@ -1,0 +1,402 @@
+[
+    {
+        "model": "restaurant.menu",
+        "pk": 1,
+        "fields": {
+            "name": "Menu Italian",
+            "description": "Delicious Italian Cuisine",
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.menu",
+        "pk": 2,
+        "fields": {
+            "name": "Menu Mexican",
+            "description": "Savory Mexican Flavors",
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.menu",
+        "pk": 3,
+        "fields": {
+            "name": "Menu Japanese",
+            "description": "Authentic Japanese Dishes",
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.menu",
+        "pk": 4,
+        "fields": {
+            "name": "Menu American",
+            "description": "Classic American Favorites",
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.menu",
+        "pk": 5,
+        "fields": {
+            "name": "Menu French",
+            "description": "Exquisite French Cuisine",
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 1,
+        "fields": {
+            "name": "Pizza Margherita",
+            "menu": 1,
+            "description": "Classic pizza topped with tomato sauce, mozzarella cheese, and fresh basil leaves.",
+            "price": "10.00",
+            "preparation_time": "00:25:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 2,
+        "fields": {
+            "name": "Spaghetti Carbonara",
+            "menu": 1,
+            "description": "Pasta dish consisting of spaghetti, eggs, pancetta, and grated Pecorino Romano cheese.",
+            "price": "12.50",
+            "preparation_time": "00:30:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 3,
+        "fields": {
+            "name": "Risotto ai Funghi",
+            "menu": 1,
+            "description": "Creamy risotto cooked with porcini mushrooms, onions, garlic, and Parmesan cheese.",
+            "price": "15.00",
+            "preparation_time": "00:35:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 4,
+        "fields": {
+            "name": "Lasagna",
+            "menu": 1,
+            "description": "Layers of pasta sheets filled with Bolognese sauce, ricotta cheese, and mozzarella.",
+            "price": "18.00",
+            "preparation_time": "00:45:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 5,
+        "fields": {
+            "name": "Tiramisu",
+            "menu": 1,
+            "description": "Traditional Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cheese, dusted with cocoa powder.",
+            "price": "8.00",
+            "preparation_time": "00:20:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 6,
+        "fields": {
+            "name": "Tacos al Pastor",
+            "menu": 2,
+            "description": "Traditional Mexican street tacos with marinated pork, pineapple, and cilantro.",
+            "price": "8.99",
+            "preparation_time": "00:20:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 7,
+        "fields": {
+            "name": "Quesadillas",
+            "menu": 2,
+            "description": "Grilled tortillas filled with melted cheese and your choice of meat or vegetables.",
+            "price": "7.50",
+            "preparation_time": "00:15:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 8,
+        "fields": {
+            "name": "Guacamole",
+            "menu": 2,
+            "description": "Freshly made guacamole with ripe avocados, tomatoes, onions, and lime juice.",
+            "price": "6.99",
+            "preparation_time": "00:10:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 9,
+        "fields": {
+            "name": "Enchiladas",
+            "menu": 2,
+            "description": "Corn tortillas rolled and filled with cheese, chicken, or beef, topped with chili sauce and melted cheese.",
+            "price": "9.50",
+            "preparation_time": "00:25:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 10,
+        "fields": {
+            "name": "Churros",
+            "menu": 2,
+            "description": "Deep-fried dough pastry dusted with cinnamon sugar, served with chocolate dipping sauce.",
+            "price": "5.99",
+            "preparation_time": "00:30:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 11,
+        "fields": {
+            "name": "Sushi with Salmon",
+            "menu": 3,
+            "description": "Delicious sushi rolls with fresh salmon slices.",
+            "price": "18.50",
+            "preparation_time": "00:25:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 12,
+        "fields": {
+            "name": "Shrimp Tempura",
+            "menu": 3,
+            "description": "Crispy tempura-battered shrimp served with dipping sauce.",
+            "price": "14.99",
+            "preparation_time": "00:20:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 13,
+        "fields": {
+            "name": "Chicken Ramen",
+            "menu": 3,
+            "description": "Traditional Japanese noodle soup with chicken, vegetables, and broth.",
+            "price": "12.99",
+            "preparation_time": "00:30:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 14,
+        "fields": {
+            "name": "Miso Soup",
+            "menu": 3,
+            "description": "Traditional Japanese soup made with miso paste, tofu, seaweed, and green onions.",
+            "price": "5.99",
+            "preparation_time": "00:15:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 15,
+        "fields": {
+            "name": "Katsudon",
+            "menu": 3,
+            "description": "A popular Japanese rice bowl dish topped with breaded and fried pork cutlet, egg, and condiments.",
+            "price": "16.50",
+            "preparation_time": "00:35:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 16,
+        "fields": {
+            "name": "Hamburger",
+            "menu": 4,
+            "description": "Classic American beef burger with lettuce, tomato, onion, and cheese, served with fries.",
+            "price": "10.99",
+            "preparation_time": "00:20:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 17,
+        "fields": {
+            "name": "BBQ Ribs",
+            "menu": 4,
+            "description": "Tender pork ribs slow-cooked and basted in barbecue sauce, served with coleslaw and cornbread.",
+            "price": "18.99",
+            "preparation_time": "02:30:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 18,
+        "fields": {
+            "name": "Macaroni and Cheese",
+            "menu": 4,
+            "description": "Creamy macaroni pasta mixed with cheese sauce, baked until golden brown.",
+            "price": "12.50",
+            "preparation_time": "00:40:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 19,
+        "fields": {
+            "name": "Buffalo Wings",
+            "menu": 4,
+            "description": "Crispy chicken wings tossed in spicy buffalo sauce, served with celery sticks and blue cheese dressing.",
+            "price": "14.50",
+            "preparation_time": "00:35:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 20,
+        "fields": {
+            "name": "Cheeseburger",
+            "menu": 4,
+            "description": "Classic American cheeseburger with lettuce, tomato, onion, pickles, and cheese, served with fries.",
+            "price": "11.99",
+            "preparation_time": "00:25:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 21,
+        "fields": {
+            "name": "Boeuf Bourguignon",
+            "menu": 5,
+            "description": "Classic French beef stew cooked in red wine, with carrots, onions, and mushrooms.",
+            "price": "22.99",
+            "preparation_time": "03:00:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 22,
+        "fields": {
+            "name": "Coq au Vin",
+            "menu": 5,
+            "description": "Traditional French chicken dish braised with wine, mushrooms, and garlic.",
+            "price": "19.99",
+            "preparation_time": "02:30:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 23,
+        "fields": {
+            "name": "Quiche Lorraine",
+            "menu": 5,
+            "description": "Savory pie filled with eggs, cream, bacon, and cheese, baked until golden brown.",
+            "price": "15.50",
+            "preparation_time": "01:00:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 24,
+        "fields": {
+            "name": "Salade Niçoise",
+            "menu": 5,
+            "description": "Traditional French salad with tuna, boiled eggs, olives, tomatoes, and green beans.",
+            "price": "16.99",
+            "preparation_time": "00:30:00",
+            "vegetarian": false,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    },
+    {
+        "model": "restaurant.dish",
+        "pk": 25,
+        "fields": {
+            "name": "Crème Brûlée",
+            "menu": 5,
+            "description": "Classic French dessert consisting of rich custard topped with caramelized sugar.",
+            "price": "9.99",
+            "preparation_time": "01:30:00",
+            "vegetarian": true,
+            "created_dt": "2024-03-14T08:00:00Z",
+            "updated_dt": "2024-03-14T08:00:00Z"
+        }
+    }
+]
