@@ -1,0 +1,34 @@
+services:
+  database:
+    build: "../database"
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME:-cloud_services_db}
+      - POSTGRES_USER=${DATABASE_USER:-dj_adm}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD:-VFg@cDm4tXQL3!2f7}
+      - POSTGRES_PORT=${DATABASE_PORT:-5432}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    expose:
+      - ${DATABASE_PORT:-5432}
+    ports:
+      - ${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}
+    command: -p ${DATABASE_PORT:-5432}
+  backend:
+    environment:
+      - DATABASE_ENGINE=${DATABASE_ENGINE:-django.db.backends.postgresql_psycopg2}
+      - DATABASE_NAME=${DATABASE_NAME:-cloud_services_db}
+      - DATABASE_USER=${DATABASE_USER:-dj_adm}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD:-VFg@cDm4tXQL3!2f7}
+      - DATABASE_HOST=${DATABASE_HOST:-database}
+      - DATABASE_PORT=${DATABASE_PORT:-5432}
+    build: ../cloud_services/
+    ports:
+      - "8000:8000"
+    command: "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ../cloud_services:/cloud_services
+    depends_on:
+      - database
+
+volumes:
+    postgres_data: {}
