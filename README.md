@@ -93,10 +93,11 @@ The eMenu project is an application serving as an online restaurant menu, allowi
 Installation process is fairly simple. All you need is alredy prepared in Dockerfiles and `docker-compose.yml` file. You clone repository, enter one command, and all services, images and containers should be running on your machine.
 
 1. Clone the repository from GitHub with `git clone https://github.com/dSzczypta/CloudServicesRecruitmentTask` `cd your_repository` command.
-2. Run the `docker compose up` command. It will build required images and start all services (backend written in Django + postgres database).
-3. The application will be accessible at `http://localhost:8000`.
-4. To load initial data for the project use `docker exec cloud_services-backend-1 bash -c "python manage.py loaddata fixtures/menu.seed.json"`.
-5. Create a superuser by entering the container with the command `docker exec -it cloud_services-backend-1`, then type the command `python manage.py createsuperuser`. Complete the required registration information.
+2. Create `.env` file based on `example.env`
+3. Run the `docker compose up` command. It will build required images and start all services (backend written in Django + postgres database).
+4. The application will be accessible at `http://localhost:8000`.
+5. To load initial data for the project use `docker exec cloud_services-backend-1 bash -c "python manage.py loaddata fixtures/menu.seed.json"`.
+6. Create a superuser by entering the container with the command `docker exec -it cloud_services-backend-1`, then type the command `python manage.py createsuperuser`. Complete the required registration information.
     
 
 ## Contact
