@@ -129,6 +129,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCESS_TOKEN_LIFETIME = 28800
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MAX_UPLOAD_SIZE = 20048576
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 

@@ -1,13 +1,16 @@
 from rest_framework import generics, mixins, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser
 
+from django.core.exceptions import ValidationError
 from django.db.models import ProtectedError
 from django.db import IntegrityError
 
-from restaurant.models import Menu, Dish
-from restaurant.serializers import MenuSerializer, DishSerializer
 from drf_yasg.utils import swagger_auto_schema
+
+from restaurant.models import Menu, Dish, DishAttachment
+from restaurant.serializers import MenuSerializer, DishSerializer, DishAttachmentSerializer
 
 
 class MenuGenericAPI(generics.GenericAPIView, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
@@ -31,11 +34,11 @@ class MenuGenericAPI(generics.GenericAPIView, mixins.ListModelMixin, mixins.Retr
     DELETE: 
     - Delete a specific menu item.
     """
-    
+
     queryset = Menu.objects
     serializer_class = MenuSerializer
     permission_classes = [IsAuthenticated]
-    
+
     @swagger_auto_schema(
         security=[{'Bearer': []}]
     )
@@ -192,3 +195,54 @@ class DishGenericAPI(generics.GenericAPIView, mixins.ListModelMixin, mixins.Retr
         except (ProtectedError, IntegrityError) as e:
             return Response({"message": f'You cannot delete a {self.queryset.model.__name__}. It is linked to other resources', "details": getattr(e, 'message', str(e))}, status=status.HTTP_409_CONFLICT)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class DishAttachmentGenericAPI(generics.GenericAPIView, mixins.CreateModelMixin,):
+    """
+    A class-based view for handling DishAttachment creation via API.
+
+    Attributes:
+        permission_classes (list): A list containing the permission classes required for accessing the view.
+        queryset (QuerySet): The queryset containing DishAttachment objects.
+        serializer_class (Serializer): The serializer class responsible for serializing DishAttachment objects.
+        parser_classes (list): A list containing the parser classes used for parsing incoming request data.
+
+    Methods:
+        post(request, format=None):
+            Handles POST requests to create DishAttachment objects.
+            Args:
+                request (HttpRequest): The HTTP request object containing the data.
+                format (str, optional): The format of the response. Defaults to None.
+            Returns:
+                Response: An HTTP response indicating the result of the operation.
+
+    Example:
+        To create a DishAttachment object via API, send a POST request with the required data.
+    """
+    permission_classes = [IsAuthenticated]
+    queryset = DishAttachment.objects
+    serializer_class = DishAttachmentSerializer
+    parser_classes = [MultiPartParser]
+
+    def post(self, request, format=None):
+        """
+        Handles POST requests to create DishAttachment objects.
+
+        Args:
+            request (HttpRequest): The HTTP request object containing the data.
+            format (str, optional): The format of the response. Defaults to None.
+
+        Returns:
+            Response: An HTTP response indicating the result of the operation.
+        """
+        if 'files' in request.data:
+            files = request.data.pop('files')
+            for file in files:
+                data = {"dish_id": request.data["id"], "file": file}
+                try:
+                    att = DishAttachment(**data)
+                    att.save()
+                except ValidationError as e:
+                    return Response(e.message_dict, status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "success"}, status.HTTP_201_CREATED)
