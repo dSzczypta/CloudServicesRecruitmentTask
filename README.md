@@ -79,6 +79,10 @@ The eMenu project is an application serving as an online restaurant menu, allowi
 - With extensive test coverage, developers can confidently iterate on the codebase, identifying and rectifying potential issues early in the development cycle.
 - Leveraging a test coverage of at least 70%, the project fosters code reliability and maintainability, promoting a high-quality software development process.
 
+##### Coverage Screenshoot
+
+![coverage_report](coverage_report.png)
+
 #### Optimization
 
 - Optimization techniques such as `prefetch_related` are employed within the Python codebase to minimize the number of database queries and enhance performance.
