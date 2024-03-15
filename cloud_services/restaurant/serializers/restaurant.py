@@ -37,7 +37,7 @@ class DishSerializer(serializers.ModelSerializer):
     created_dt = DateTimeWithTimeZone(required=False)
     updated_dt = DateTimeWithTimeZone(required=False)
     
-    file_names = serializers.SerializerMethodField()
+    file_names = serializers.SerializerMethodField(required=False)
 
     def get_file_names(self, instance):
         return [{'name': os.path.basename(name), 'file': name} for name in instance.files.all().values_list('file', flat = True)]
