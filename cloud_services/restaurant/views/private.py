@@ -7,8 +7,6 @@ from django.core.exceptions import ValidationError
 from django.db.models import ProtectedError
 from django.db import IntegrityError
 
-from drf_yasg.utils import swagger_auto_schema
-
 from restaurant.models import Menu, Dish, DishAttachment
 from restaurant.serializers import MenuSerializer, DishSerializer, DishAttachmentSerializer
 
@@ -39,9 +37,6 @@ class MenuGenericAPI(generics.GenericAPIView, mixins.ListModelMixin, mixins.Retr
     serializer_class = MenuSerializer
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(
-        security=[{'Bearer': []}]
-    )
     def get(self, request, pk=None, *args, **kwargs):
         """
         Retrieve a list of all menu items or retrieve a specific menu item by its ID.
