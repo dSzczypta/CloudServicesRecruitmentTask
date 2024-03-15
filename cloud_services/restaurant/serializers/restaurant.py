@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from restaurant.models import Menu, Dish
+from restaurant.models import Menu, Dish, DishAttachment
 import pytz
 from cloud_services.settings import TIME_ZONE
-
+import os
 
 class DateTimeWithTimeZone(serializers.DateTimeField):
     """
@@ -36,6 +36,12 @@ class DishSerializer(serializers.ModelSerializer):
     """
     created_dt = DateTimeWithTimeZone(required=False)
     updated_dt = DateTimeWithTimeZone(required=False)
+    
+    file_names = serializers.SerializerMethodField()
+
+    def get_file_names(self, instance):
+        return [{'name': os.path.basename(name), 'file': name} for name in instance.files.all().values_list('file', flat = True)]
+
 
     class Meta:
         """
@@ -48,7 +54,7 @@ class DishSerializer(serializers.ModelSerializer):
         """
         model = Dish
         fields = ['id', 'name', 'description', 'price', 'preparation_time',
-                  'vegetarian', 'menu', 'created_dt', 'updated_dt']
+                  'vegetarian', 'menu', 'created_dt', 'updated_dt', 'file_names']
         read_only_fields = ['created_dt', 'updated_dt']
 
 
@@ -64,6 +70,7 @@ class MenuSerializer(serializers.ModelSerializer):
     created_dt = DateTimeWithTimeZone(required=False)
     updated_dt = DateTimeWithTimeZone(required=False)
     dishes = DishSerializer(many=True, required=False)
+    
 
     class Meta:
         """
@@ -78,3 +85,12 @@ class MenuSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description',
                   'created_dt', 'updated_dt', 'dishes']
         read_only_fields = ['created_dt', 'updated_dt', 'dishes']
+
+
+class DishAttachmentSerializer(serializers.ModelSerializer):
+    """
+    Serializer for DishAttachment model.
+    """
+    class Meta:
+        model = DishAttachment
+        fields = '__all__'
